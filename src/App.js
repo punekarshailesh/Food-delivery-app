@@ -20,6 +20,8 @@ function App() {
       </header> */}
 
       Hello world
+
+      Lets begin the app building
     </div>
   );
 }
