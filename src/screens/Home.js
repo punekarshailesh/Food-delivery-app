@@ -20,7 +20,25 @@ export default function Home() {
               Description about the dish
             </p>
 
-            <div className="container"></div>
+            <div className="container w-100">
+             <select className="m-2 h-100 w-100 bg-success rounded">
+              {
+                // inside this we can write Js
+                // number of quantities customer want (at max 6 can be ordered at a time)
+                Array.from(Array(6),(e, i)=>{
+                  return(
+                    <option key={i+1} value={i+1}> {i+1} </option>
+                  )
+                })
+              }
+             </select>
+
+             <select className="m-2 h-100 w-100 bg-success rounded">
+                <option value="half">Half</option>
+                <option value="full">Full</option>
+             </select>
+
+            </div>
             {/* <a href="/" className="btn btn-primary">Go somewhere</a> */}
           </div>
         </div>
