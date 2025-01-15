@@ -6,8 +6,9 @@ const port = 5000
 
 const mongoDB = require("./db")
 
-app.use((req, res, next)=>{
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+
+app.use((req, res, next /*Middleware*/)=>{
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000"); // react host ho rhi hai on 3000 port
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept"
@@ -18,14 +19,14 @@ app.use((req, res, next)=>{
 
 // calling mongoDB function
 mongoDB();
-
+app.use(express.json());
+app.use('/api', require("./Routes/CreateUser"));
 app.get('/',(req,res)=>{
+
     res.send("Hello world!.....")
 })
 
 
-app.use(express.json());
-app.use('/api', require("./Routes/CreateUser"));
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

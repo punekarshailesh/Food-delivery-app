@@ -32,8 +32,9 @@ export default function Signup() {
 
     if (!json.success) {
       if (json.errors) {
-        const errorMessages = json.errors.map(err => err.msg).join('\n');
-        alert("Validation failed:\n" + errorMessages);
+        // const errorMessages = json.errors.map(err => err.msg).join('\n');
+        // alert("Validation failed:\n" + errorMessages);
+        alert("Enter valid credentials");
       } else {
         alert("Enter valid credentials");
       }
