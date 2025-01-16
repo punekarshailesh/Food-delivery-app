@@ -43,6 +43,11 @@ export default function Login() {
           // alert("Enter valid credentials");
         // }
       }
+
+      if(json.success)
+      {
+        navigate("/");
+      }
     };
   
     const onChange = (event) => {
