@@ -1,5 +1,5 @@
-import {React,useState} from 'react'
-import {Link} from 'react-router-dom'
+import {React,use,useState} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 
 export default function Login() {
 
@@ -11,10 +11,12 @@ export default function Login() {
       // location: ""
     }); // default values to overcome this onchange listener
   
+
+    let navigate = useNavigate();
     const handleSubmit = async (e) => {
       e.preventDefault(); // synthetic event example
-      console.log(JSON.stringify({email:credentials.email,password:credentials.password}))
-      const response = await fetch("http://localhost:5000/api/createuser", {
+      // console.log(JSON.stringify({email:credentials.email,password:credentials.password}))
+      const response = await fetch("http://localhost:5000/api/loginuser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,13 +35,13 @@ export default function Login() {
       console.log(json);
   
       if (!json.success) {
-        if (json.errors) {
+        // if (json.errors) {
           // const errorMessages = json.errors.map(err => err.msg).join('\n');
           // alert("Validation failed:\n" + errorMessages);
           alert("Enter valid credentials");
-        } else {
-          alert("Enter valid credentials");
-        }
+        // } else {
+          // alert("Enter valid credentials");
+        // }
       }
     };
   
@@ -88,7 +90,7 @@ export default function Login() {
             Login
           </button>
           <Link to="/create" className="btn btn-danger">
-            Already a user
+            New user
           </Link>
         </form>
       </div>
