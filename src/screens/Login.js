@@ -1,4 +1,4 @@
-import {React,use,useState} from 'react'
+import {React,useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 export default function Login() {
@@ -46,6 +46,8 @@ export default function Login() {
 
       if(json.success)
       {
+        localStorage.setItem("authToken",json.authToken);
+        console.log(localStorage.getItem("authToken"));
         navigate("/");
       }
     };
@@ -94,7 +96,7 @@ export default function Login() {
           <button type="submit" className="m-3 btn btn-success">
             Login
           </button>
-          <Link to="/create" className="btn btn-danger">
+          <Link to="/" className="btn btn-danger">
             New user
           </Link>
         </form>

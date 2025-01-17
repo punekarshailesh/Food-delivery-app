@@ -6,7 +6,13 @@ const User = require("../models/User");
 
 const { body, validationResult } = require("express-validator");
 
+// jwt
+const jwt = require("jsonwebtoken");
+
 const bcrypt = require("bcryptjs"); // for hashing the password
+
+const jwtSecret = "PornimaMarotiMadnePadminbaiDattatrayMadne"
+
 
 router.post(
   "/createuser",
@@ -47,6 +53,8 @@ router.post(
   }
 );
 
+
+// login
 router.post(
   "/loginuser",
   [
@@ -70,16 +78,25 @@ router.post(
           .json({ errors: "Try logging with correct credentials" });
       }
 
-      if (req.body.password !== user_data.password) {
+      const pwdCompare = await bcrypt.compare(req.body.password, user_data.password);
+      if(!pwdCompare) {
         return res
           .status(400)
           .json({ errors: "Try logging with correct credentials" });
       }
 
-      return res.json({ success: true, user_data });
+      // for authentication token we are using id 
+      const data = {
+        user: {
+          id: user_data.id,
+        },
+      };
+
+      const authToken = jwt.sign(data, jwtSecret);
+      return res.json({ success: true,  authToken : authToken });
       // })
 
-      res.json({ success: true });
+      // res.json({ success: true });
     } catch (error) {
       console.log(error);
       res
