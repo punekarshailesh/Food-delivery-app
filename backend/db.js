@@ -2,7 +2,7 @@ const mongoose = require('mongoose'); // alternative for importing mongoose modu
 
 // MongoDB connection URI
 // db name = gofoodmern
-const mongoDB_URI = '';
+const mongoDB_URI = 'mongodb+srv://shaileshmadne29:Shailesh2906@cluster0.hfznp.mongodb.net/gofoodmern?retryWrites=true&w=majority&appName=Cluster0';
 
 const mongoDB = async () => {
     try {
@@ -18,11 +18,18 @@ const mongoDB = async () => {
         const data = await fetched_data.find({}).toArray();
         // console.log('Fetched Data:', data);
 
+        
+        
+        
         // fetching another data files from DB i.e. foodCategory data
         const fetched_category_data=mongoose.connection.db.collection("foodCategory");
-
+        
         //
         const category_data = await fetched_category_data.find({}).toArray();
+        
+        // global variable to access all these db to show it on front-end
+        global.food_items = data;
+        global.foodCategory=category_data;
 
         // console.log("Feteched category data: ", category_data);
 
