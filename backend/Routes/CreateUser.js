@@ -27,7 +27,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
+    // hasing using  genSalt
     const salt = await bcrypt.genSalt(10);
     let secPassword = await bcrypt.hash(req.body.password, salt);
     try {
