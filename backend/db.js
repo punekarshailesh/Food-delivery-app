@@ -2,7 +2,7 @@ const mongoose = require('mongoose'); // alternative for importing mongoose modu
 
 // MongoDB connection URI
 // db name = gofoodmern
-const mongoDB_URI = 'mongodb+srv://shaileshmadne29:Shailesh2906@cluster0.hfznp.mongodb.net/gofoodmern?retryWrites=true&w=majority&appName=Cluster0';
+const mongoDB_URI = '';
 
 const mongoDB = async () => {
     try {

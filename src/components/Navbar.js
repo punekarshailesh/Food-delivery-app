@@ -1,11 +1,12 @@
-import React, { use } from "react";
+import React from "react";
 import { Link,useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar(props) {
 
   const navigate = useNavigate();
   const handleLogout = ()=>{
     localStorage.removeItem("authToken");
+    localStorage.removeItem("userName");
     navigate("/login")
     // window.location.replace("/login");
   }
@@ -43,6 +44,13 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
+              {/* {localStorage.getItem("authToken") ? (
+                // <li>
+                //   <div className="nav-link active fs-5">
+                //     Welcome, {localStorage.getItem("userName")}
+                //   </div>
+                // </li>
+              ) : ""} */}
 
               {localStorage.getItem("authToken") ? (
                 <li className="nav-item">
@@ -67,6 +75,7 @@ export default function Navbar() {
             </div>
             :
             <div>
+              {/* <div>{props.userName}</div> */}
             <div className="btn bg-white text-success mx-2">My Cart</div>
             
 

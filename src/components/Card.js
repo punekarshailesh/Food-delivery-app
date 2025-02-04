@@ -5,11 +5,16 @@ export default function Card(props) {
   let options = props.options;
   let priceOptions = Object.keys(options);
 
+  const handleAddToCart = () =>{
+    
+
+  }
+
 
   return (
     <div>
       {/* key value pair pass krna padta hai while styling */}
-      <div className="card mt-2" style={{ width: "18rem", maxHeight: "360px" }}>
+      <div className="card mt-2" style={{ width: "18rem", maxHeight: "500px" }}>
         {/* closing tag is very imp in jsx */}
         <img src={props.imgSrc} className="card-img-top" alt="...."  style={{height:"150px",objectFit:"fill"}}/>
         <div className="card-body">
@@ -45,7 +50,8 @@ export default function Card(props) {
 
             <div className="d-inline h-100 fs-5">Total Price</div>
           </div>
-          {/* <a href="/" className="btn btn-primary">Go somewhere</a> */}
+        <hr/>
+        <button className="btn btn-success justify-center ms-2" onClick={handleAddToCart}>Add to Cart</button>
         </div>
       </div>
     </div>
